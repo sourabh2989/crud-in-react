@@ -20,19 +20,26 @@ const Read = () => {
         getdata();
       });
   }
-  const setTolocal=(id,name,email)=>{
-    localStorage.setItem("id",id)
-    localStorage.setItem("name",name)
-    localStorage.setItem("email",email)
-  }
+  const setTolocal = (id, name, email) => {
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+  };
 
   useEffect(() => {
     getdata();
   }, []);
   //   getdata();
   return (
-    <div>
-      <h2>Read Operation</h2>
+    <>
+      <div className="d-flex justify-content-between m-2">
+        <h2>Read Operations</h2>
+        <Link to="/">
+          <button className="btn-primary" onClick={() => {}}>
+            Create
+          </button>
+        </Link>
+      </div>
       <table className="table">
         <thead>
           <tr>
@@ -54,7 +61,14 @@ const Read = () => {
 
                   <td>
                     <Link to="/update">
-                    <button className="btn-success" onClick={()=>setTolocal(each.id,each.name,each.email)}>Edit</button>
+                      <button
+                        className="btn-success"
+                        onClick={() =>
+                          setTolocal(each.id, each.name, each.email)
+                        }
+                      >
+                        Edit
+                      </button>
                     </Link>
                   </td>
                   <td>
@@ -73,7 +87,7 @@ const Read = () => {
           );
         })}
       </table>
-    </div>
+    </>
   );
 };
 

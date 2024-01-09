@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const Home = () => {
   const [name, setName] = useState("");
@@ -17,15 +17,22 @@ const Home = () => {
         name: name,
         email: email,
         header,
+      })
+      // history("/read")
+      .then(() => {
+        history("/read");
       });
-      history("/read")
-    //   .then(() => {
-    //     history("/read");
-    //   });
   };
   return (
     <>
+    <div className="d-flex justify-content-between m-2">
       <h2>create</h2>
+    <Link to="/read">
+    <button className="btn-secondary" onClick={() => { }}>
+        Show 
+      </button>
+    </Link>
+      </div>
       <form>
         <div className="mb-3">
           <div className="mb-3">
