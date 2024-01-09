@@ -20,7 +20,7 @@ const Update = () => {
     e.preventDefault();
     console.log("Id...", id);
     axios
-      .put(`https://62a59821b9b74f766a3c09a4.mockapi.io/${id}`, {
+      .put(`https://62a59821b9b74f766a3c09a4.mockapi.io/crud/${id}`, {
         name: name,
         email: email,
       })

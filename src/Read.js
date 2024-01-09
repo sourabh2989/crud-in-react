@@ -17,13 +17,17 @@ const Read = () => {
 
   function handleDelete(id) {
     const deletedItem = data.find((item) => item.id === id);
-
+    
     axios
-      .delete(`https://62a59821b9b74f766a3c09a4.mockapi.io/crud/${id}`)
-      .then(() => {
-        setLastDeletedItem(deletedItem);
-        getData();
-      });
+    .delete(`https://62a59821b9b74f766a3c09a4.mockapi.io/crud/${id}`)
+    .then(() => {
+      setLastDeletedItem(deletedItem);
+      getData();
+      setBtn(true)
+      setTimeout(() => {
+        setBtn(false)
+      }, 2000);
+    });
   }
 
   function handleUndo() {
@@ -49,6 +53,9 @@ const Read = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const [btn, setBtn]=useState(true)
+
 
   return (
     <>
@@ -113,13 +120,16 @@ const Read = () => {
           </tbody>
         ))}
       </table>
-      <div className="m-2">
-        {lastDeletedItem && (
-          <button className="btn btn-warning" onClick={handleUndo}>
-            Undo Delete {lastDeletedItem.name}
-          </button>
-        )}
-      </div>
+      {btn?
+         <div className="m-2">
+        
+         {lastDeletedItem && (
+           <button className="btn btn-warning" onClick={handleUndo}>
+             Undo Delete {lastDeletedItem.name}
+           </button>
+         )}
+       </div>    
+      :null}
     </>
   );
 };
