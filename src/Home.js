@@ -1,64 +1,59 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const history = useNavigate();
 
-  const header = { "Access-Control-Allow-origin": "*" };
-
-  const handlesumit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("clicked");
+    console.log("clciekd");
     axios
-      .post("https://659bcfb2d565feee2dabc4d0.mockapi.io/crud", {
+      .post("https://62a59821b9b74f766a3c09a4.mockapi.io/crud", {
         name: name,
         email: email,
-        header,
       })
-      // history("/read")
       .then(() => {
         history("/read");
       });
   };
+
   return (
     <>
-    <div className="d-flex justify-content-between m-2">
-      <h2>create</h2>
-    <Link to="/read">
-    <button className="btn-secondary" onClick={() => { }}>
-        Show 
-      </button>
-    </Link>
+      <div className="d-flex justify-content-between m-2">
+        <h2>Create</h2>
+        <Link to="/read">
+          <button className="btn btn-primary">Show Data</button>
+        </Link>
       </div>
       <form>
         <div className="mb-3">
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
-              Name
-            </label>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              className="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-          <label for="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
+          <label className="form-label">Name</label>
           <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
-        <button type="submit" className="btn btn-primary" onClick={handlesumit}>
+        <div className="mb-3">
+          <label className="form-label">Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            aria-describedby="emailHelp"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </form>
