@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,15 +19,32 @@ const Update = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log("Id...", id);
-    axios
-      .put(`https://62a59821b9b74f766a3c09a4.mockapi.io/crud/${id}`, {
-        name: name,
-        email: email,
-      })
-      .then(() => {
-        navigate("/read");
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to Update data!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Updated!",
+          text: "Your file has been Updated.",
+          icon: "success"
+          
+        }); axios
+        .put(`https://62a59821b9b74f766a3c09a4.mockapi.io/crud/${id}`, {
+          name: name,
+          email: email,
+        })
+        .then(() => {
+          navigate("/read");
+        });
+      }
+    });
+   
   };
 
   return (
