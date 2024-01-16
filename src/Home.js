@@ -44,14 +44,14 @@ const Home = () => {
   return (
     <>
       <div className="d-flex justify-content-between m-2">
-        <h2>INstagram</h2>
+        <h2>Instagram</h2>
         <Link to="/read">
           <button className="btn btn-primary">Show Data</button>
         </Link>
       </div>
       <form>
         <div className="mb-3">
-          <label className="form-label">USERName</label>
+          <label className="form-label">Username</label>
           <input
             type="text"
             className="form-control"
