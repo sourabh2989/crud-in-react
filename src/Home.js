@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Home = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
   const history = useNavigate();
 
   const handleSubmit = (e) => {

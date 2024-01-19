@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [id, setId] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [id, setId] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
 
   const navigate = useNavigate();
 
